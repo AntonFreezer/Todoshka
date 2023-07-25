@@ -7,25 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9614DA502A6DAE520037961D /* TaskTodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614DA4F2A6DAE520037961D /* TaskTodoTableViewCell.swift */; };
 		962BFE952A6BE5780040A29B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962BFE942A6BE5780040A29B /* AppDelegate.swift */; };
 		962BFE972A6BE5780040A29B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962BFE962A6BE5780040A29B /* SceneDelegate.swift */; };
-		962BFE992A6BE5780040A29B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962BFE982A6BE5780040A29B /* ViewController.swift */; };
-		962BFE9C2A6BE5780040A29B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962BFE9A2A6BE5780040A29B /* Main.storyboard */; };
+		962BFE992A6BE5780040A29B /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962BFE982A6BE5780040A29B /* TodoListViewController.swift */; };
 		962BFE9F2A6BE5780040A29B /* Todoshka.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 962BFE9D2A6BE5780040A29B /* Todoshka.xcdatamodeld */; };
 		962BFEA12A6BE5790040A29B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 962BFEA02A6BE5790040A29B /* Assets.xcassets */; };
-		962BFEA42A6BE5790040A29B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962BFEA22A6BE5790040A29B /* LaunchScreen.storyboard */; };
+		962BFEAC2A6BF06C0040A29B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962BFEAB2A6BF06C0040A29B /* LaunchScreen.storyboard */; };
+		962BFEB02A6C08D30040A29B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 962BFEAF2A6C08D30040A29B /* SnapKit */; };
+		962BFEB22A6C3A180040A29B /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962BFEB12A6C3A180040A29B /* TodoTableViewCell.swift */; };
+		9677E0FC2A6EB01700461D67 /* MainNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9677E0FB2A6EB01700461D67 /* MainNC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9614DA4F2A6DAE520037961D /* TaskTodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTodoTableViewCell.swift; sourceTree = "<group>"; };
 		962BFE912A6BE5780040A29B /* Todoshka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoshka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		962BFE942A6BE5780040A29B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		962BFE962A6BE5780040A29B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		962BFE982A6BE5780040A29B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		962BFE9B2A6BE5780040A29B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		962BFE982A6BE5780040A29B /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		962BFE9E2A6BE5780040A29B /* Todoshka.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todoshka.xcdatamodel; sourceTree = "<group>"; };
 		962BFEA02A6BE5790040A29B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		962BFEA32A6BE5790040A29B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		962BFEA52A6BE5790040A29B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		962BFEAB2A6BF06C0040A29B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		962BFEB12A6C3A180040A29B /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
+		9677E0FB2A6EB01700461D67 /* MainNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,12 +38,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				962BFEB02A6C08D30040A29B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9614DA4E2A6DADE90037961D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				962BFEB82A6C5A200040A29B /* Base */,
+				9614DA4F2A6DAE520037961D /* TaskTodoTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		962BFE882A6BE5780040A29B = {
 			isa = PBXGroup;
 			children = (
@@ -58,16 +73,65 @@
 		962BFE932A6BE5780040A29B /* Todoshka */ = {
 			isa = PBXGroup;
 			children = (
-				962BFE942A6BE5780040A29B /* AppDelegate.swift */,
-				962BFE962A6BE5780040A29B /* SceneDelegate.swift */,
-				962BFE982A6BE5780040A29B /* ViewController.swift */,
-				962BFE9A2A6BE5780040A29B /* Main.storyboard */,
-				962BFEA02A6BE5790040A29B /* Assets.xcassets */,
-				962BFEA22A6BE5790040A29B /* LaunchScreen.storyboard */,
+				962BFEB62A6C59F90040A29B /* App */,
+				962BFEB72A6C5A0E0040A29B /* Controllers */,
+				9614DA4E2A6DADE90037961D /* Views */,
 				962BFEA52A6BE5790040A29B /* Info.plist */,
-				962BFE9D2A6BE5780040A29B /* Todoshka.xcdatamodeld */,
 			);
 			path = Todoshka;
+			sourceTree = "<group>";
+		};
+		962BFEB32A6C55730040A29B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				962BFEA02A6BE5790040A29B /* Assets.xcassets */,
+				962BFE9D2A6BE5780040A29B /* Todoshka.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		962BFEB42A6C55A30040A29B /* App&SceneDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				962BFE942A6BE5780040A29B /* AppDelegate.swift */,
+				962BFE962A6BE5780040A29B /* SceneDelegate.swift */,
+			);
+			path = "App&SceneDelegate";
+			sourceTree = "<group>";
+		};
+		962BFEB52A6C55BF0040A29B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				962BFEAB2A6BF06C0040A29B /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		962BFEB62A6C59F90040A29B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				962BFEB52A6C55BF0040A29B /* Storyboards */,
+				962BFEB42A6C55A30040A29B /* App&SceneDelegate */,
+				962BFEB32A6C55730040A29B /* Resources */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		962BFEB72A6C5A0E0040A29B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				962BFE982A6BE5780040A29B /* TodoListViewController.swift */,
+				9677E0FB2A6EB01700461D67 /* MainNC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		962BFEB82A6C5A200040A29B /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				962BFEB12A6C3A180040A29B /* TodoTableViewCell.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +150,9 @@
 			dependencies = (
 			);
 			name = Todoshka;
+			packageProductDependencies = (
+				962BFEAF2A6C08D30040A29B /* SnapKit */,
+			);
 			productName = Todoshka;
 			productReference = 962BFE912A6BE5780040A29B /* Todoshka.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +181,9 @@
 				Base,
 			);
 			mainGroup = 962BFE882A6BE5780040A29B;
+			packageReferences = (
+				962BFEAE2A6C08D30040A29B /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 962BFE922A6BE5780040A29B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -128,9 +198,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				962BFEA42A6BE5790040A29B /* LaunchScreen.storyboard in Resources */,
 				962BFEA12A6BE5790040A29B /* Assets.xcassets in Resources */,
-				962BFE9C2A6BE5780040A29B /* Main.storyboard in Resources */,
+				962BFEAC2A6BF06C0040A29B /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +210,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				962BFE992A6BE5780040A29B /* ViewController.swift in Sources */,
+				9614DA502A6DAE520037961D /* TaskTodoTableViewCell.swift in Sources */,
+				962BFE992A6BE5780040A29B /* TodoListViewController.swift in Sources */,
+				9677E0FC2A6EB01700461D67 /* MainNC.swift in Sources */,
+				962BFEB22A6C3A180040A29B /* TodoTableViewCell.swift in Sources */,
 				962BFE952A6BE5780040A29B /* AppDelegate.swift in Sources */,
 				962BFE9F2A6BE5780040A29B /* Todoshka.xcdatamodeld in Sources */,
 				962BFE972A6BE5780040A29B /* SceneDelegate.swift in Sources */,
@@ -149,25 +221,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		962BFE9A2A6BE5780040A29B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				962BFE9B2A6BE5780040A29B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		962BFEA22A6BE5790040A29B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				962BFEA32A6BE5790040A29B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		962BFEA62A6BE5790040A29B /* Debug */ = {
@@ -295,10 +348,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Todoshka/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,10 +375,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Todoshka/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,6 +413,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		962BFEAE2A6C08D30040A29B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		962BFEAF2A6C08D30040A29B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 962BFEAE2A6C08D30040A29B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		962BFE9D2A6BE5780040A29B /* Todoshka.xcdatamodeld */ = {
