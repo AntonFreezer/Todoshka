@@ -26,22 +26,9 @@ class TodoTableViewCell: UITableViewCell {
         return messageLabel
     }()
     
-//    internal var bubbleImageView: UIImageView = {
-//        let bubbleImageView = UIImageView(frame: .zero)
-//        bubbleImageView.contentMode = .scaleToFill
-//        bubbleImageView.translatesAutoresizingMaskIntoConstraints = false
-//        return bubbleImageView
-//    }()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -50,6 +37,7 @@ class TodoTableViewCell: UITableViewCell {
     }
     
     func configureLayout() {
+        self.backgroundColor = UIColor(named: Colors.TaskTodoTableViewCellColor.rawValue)
         contentView.addSubview(messageLabel)
     }
     

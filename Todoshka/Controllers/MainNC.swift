@@ -20,7 +20,7 @@ class MainNC: UINavigationController {
         
         let standardAppearance = UINavigationBarAppearance()
         standardAppearance.configureWithOpaqueBackground()
-        standardAppearance.backgroundColor = .systemYellow
+        standardAppearance.backgroundColor = UIColor(named: Colors.NavBarColor.rawValue)
         
         navBar.standardAppearance = standardAppearance
         navBar.scrollEdgeAppearance = standardAppearance

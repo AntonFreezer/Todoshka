@@ -11,7 +11,7 @@ import SnapKit
 
 class TodoListViewController: UITableViewController {
     
-    let texts = [["To get haircut"],
+    var texts = [["To get haircut"],
                  ["To wash dishes"],
                  ["Walk a dog"],
                  ["Meet your friends and Shelby's at 5 and take shower before"]
@@ -27,15 +27,14 @@ class TodoListViewController: UITableViewController {
     func configureTableView() {
         
         tableView.sectionHeaderTopPadding = 0
-        
-        view.backgroundColor = .lightGray
-        tableView.contentInset = UIEdgeInsets(top: -1, left: 0, bottom: 0, right: 0)
+        view.backgroundColor = UIColor(named: Colors.TableViewBackgroundColor.rawValue)
+//        tableView.contentInset = UIEdgeInsets(top: -1, left: 0, bottom: 0, right: 0)
         
         tableView.register(
             TaskTodoTableViewCell.self,
             forCellReuseIdentifier: TaskCellType.task.rawValue)
         
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         tableView.rowHeight = UITableView.automaticDimension
     }
     
@@ -46,7 +45,23 @@ class TodoListViewController: UITableViewController {
     }
     //MARK: - Actions
     @objc func addButtonPressed() {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add new task", message: nil, preferredStyle: .alert)
         
+        alert.addTextField { alertTextField in
+            alertTextField.placeholder = "e.g. call mom tomorrow morning"
+            textField = alertTextField
+        }
+        
+        let action  = UIAlertAction(title: "Add task", style: .default) { action in
+            let text = textField.text
+            guard text != nil else { return }
+            self.texts.append([text!])
+            self.tableView.reloadData()
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
     
     //MARK: - UITableView Delegate & Data Source
