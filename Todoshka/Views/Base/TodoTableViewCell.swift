@@ -12,9 +12,13 @@ enum TaskCellType: String {
     case subtask
 }
 
-// Базовая ячейка для сборки, от нее наследуются более детальные ячейки (e.g. TaskTodoTableViewCell)
-
 class TodoTableViewCell: UITableViewCell {
+        
+    lazy var taskView: UIView = {
+        let taskView = UIView()
+        taskView.backgroundColor = UIColor(named: Colors.TaskTodoTableViewCellColor.rawValue)
+        return taskView
+    }()
     
     lazy var messageLabel: UILabel = {
         let messageLabel = UILabel(frame: .zero)
@@ -37,8 +41,9 @@ class TodoTableViewCell: UITableViewCell {
     }
     
     func configureLayout() {
-        self.backgroundColor = UIColor(named: Colors.TaskTodoTableViewCellColor.rawValue)
-        contentView.addSubview(messageLabel)
+        self.backgroundColor = UIColor(named: Colors.TableViewBackgroundColor.rawValue)
+        contentView.addSubview(taskView)
+        taskView.addSubview(messageLabel)
     }
     
     required init?(coder: NSCoder) {
