@@ -7,20 +7,22 @@
 
 import UIKit
 import SnapKit
-
+import CoreData
 
 class TodoListViewController: UITableViewController {
     
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appending(path: "Tasks.plist")
+    let context = (UIApplication.shared.delegate as! AppDelegate)
+        .persistentContainer.viewContext
     
-    
-    var tasksArray: [[Task]] = [[]]
+    var tasksArray = [[Task]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(dataFilePath)
+        
+        //        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         loadData()
+        
         configureNavigationView()
         configureTableView()
     }
@@ -54,8 +56,13 @@ class TodoListViewController: UITableViewController {
         }
         
         let action  = UIAlertAction(title: "Add task", style: .default) { action in
+            
             if let text = textField.text, !text.isEmpty {
-                self.tasksArray.append([Task(text: text)])
+                let newTask = Task(context: self.context)
+                newTask.text = text
+                newTask.isDone = false
+                
+                self.tasksArray.append([newTask])
                 self.saveTasks()
             }
         }
@@ -112,25 +119,28 @@ class TodoListViewController: UITableViewController {
     
     //MARK: - Working with Data
     func saveTasks() {
-        let encoder = PropertyListEncoder()
-        
         do {
-            let data = try encoder.encode(tasksArray)
-            try data.write(to: dataFilePath!)
+            try context.save()
         } catch {
-            print("Error upon encoding tasks data, \(error)")
+            print("Error when saving context \(error)")
         }
         
         self.tableView.reloadData()
     }
     
     func loadData() {
-        if let data = try? Data(contentsOf: dataFilePath!) {
-            let decoder = PropertyListDecoder()
-            do {
-                tasksArray = try decoder.decode([[Task]].self, from: data)
-            } catch {
-                print("Could not decode the Tasks array, \(error)")
+        let request: NSFetchRequest<Task> = Task.fetchRequest()
+        
+        do {
+            let requestResult = try context.fetch(request)
+            fetchTasksPerSection(from: requestResult)
+        } catch {
+            print("Error when fetching \(Task.self) from context")
+        }
+        
+        func fetchTasksPerSection(from tasksRequestResult: [Task]) {
+            for task in tasksRequestResult {
+                tasksArray.append([task])
             }
         }
     }

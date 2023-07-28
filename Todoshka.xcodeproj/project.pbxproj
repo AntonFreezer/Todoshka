@@ -17,7 +17,6 @@
 		962BFEB02A6C08D30040A29B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 962BFEAF2A6C08D30040A29B /* SnapKit */; };
 		962BFEB22A6C3A180040A29B /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962BFEB12A6C3A180040A29B /* TodoTableViewCell.swift */; };
 		9677E0FC2A6EB01700461D67 /* MainNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9677E0FB2A6EB01700461D67 /* MainNC.swift */; };
-		9692DA7B2A72B68C00F5D4E8 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9692DA7A2A72B68C00F5D4E8 /* TaskModel.swift */; };
 		96DECE862A7055B5002E6841 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DECE852A7055B5002E6841 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +32,6 @@
 		962BFEAB2A6BF06C0040A29B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		962BFEB12A6C3A180040A29B /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		9677E0FB2A6EB01700461D67 /* MainNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNC.swift; sourceTree = "<group>"; };
-		9692DA7A2A72B68C00F5D4E8 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		96DECE852A7055B5002E6841 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				962BFE9D2A6BE5780040A29B /* DataModel.xcdatamodeld */,
-				9692DA7A2A72B68C00F5D4E8 /* TaskModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,7 +224,6 @@
 				9614DA502A6DAE520037961D /* TaskTodoTableViewCell.swift in Sources */,
 				96DECE862A7055B5002E6841 /* Colors.swift in Sources */,
 				962BFE992A6BE5780040A29B /* TodoListViewController.swift in Sources */,
-				9692DA7B2A72B68C00F5D4E8 /* TaskModel.swift in Sources */,
 				9677E0FC2A6EB01700461D67 /* MainNC.swift in Sources */,
 				962BFEB22A6C3A180040A29B /* TodoTableViewCell.swift in Sources */,
 				962BFE952A6BE5780040A29B /* AppDelegate.swift in Sources */,
