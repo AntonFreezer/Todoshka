@@ -11,37 +11,24 @@ import SnapKit
 
 class TodoListViewController: UITableViewController {
     
-    var tasksArray = [
-        ["To get haircut"],
-        ["To wash dishes"],
-        ["Walk a dog"],
-        ["Meet your friends and Shelby's at 5 and take shower before"],
-//        ["Take bath"],
-//        ["Read book"],
-//        ["Share bed"],
-//        ["Yoga class"],
-//        ["Promenade"],
-    ]
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appending(path: "Tasks.plist")
     
-    let defaults = UserDefaults.standard
+    
+    var tasksArray: [[Task]] = [[]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Tasks To Do"
+        print(dataFilePath)
         
-        if let tasks = defaults.array(forKey: "tasksArray") as? [[String]] {
-            tasksArray = tasks
-        }
-        
-        configureTableView()
+        loadData()
         configureNavigationView()
+        configureTableView()
     }
     //MARK: - Views Configuration
     func configureTableView() {
-        
+        title = "Tasks To Do"
         tableView.sectionHeaderTopPadding = 0
         view.backgroundColor = UIColor(named: Colors.TableViewBackgroundColor.rawValue)
-        //        tableView.contentInset = UIEdgeInsets(top: -1, left: 0, bottom: 0, right: 0)
         
         tableView.register(
             TaskTodoTableViewCell.self,
@@ -67,13 +54,9 @@ class TodoListViewController: UITableViewController {
         }
         
         let action  = UIAlertAction(title: "Add task", style: .default) { action in
-            
             if let text = textField.text, !text.isEmpty {
-                self.tasksArray.append([text])
-                
-                self.defaults.set(self.tasksArray, forKey: "tasksArray")
-                
-                self.tableView.reloadData()
+                self.tasksArray.append([Task(text: text)])
+                self.saveTasks()
             }
         }
         
@@ -102,7 +85,7 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let text = tasksArray[indexPath.section][indexPath.row]
+        let task = tasksArray[indexPath.section][indexPath.row]
         
         var cell: TodoTableViewCell
         cell = tableView.dequeueReusableCell(
@@ -110,22 +93,45 @@ class TodoListViewController: UITableViewController {
             for: indexPath) as! TaskTodoTableViewCell
         
         
-        cell.messageLabel.text = text
+        cell.messageLabel.text = task.text
+        cell.accessoryType = task.isDone ? .checkmark : .none
+        
         cell.taskView.clipsToBounds = true
-        cell.taskView.layer.cornerRadius = 5 //cell.contentView.bounds.height * 0.33
+        cell.taskView.layer.cornerRadius = 7
         
         return cell
     }
-    
+    //MARK: - UITableView Delegate - Accessory Type
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell = tableView.cellForRow(at: indexPath)
-        switch selectedCell?.accessoryType {
-        case .checkmark:
-            selectedCell?.accessoryType = .none
-        default:
-            selectedCell?.accessoryType = .checkmark
+        let taskForCell = tasksArray[indexPath.section][indexPath.row]
+        taskForCell.isDone = !taskForCell.isDone
+        
+        saveTasks()
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    //MARK: - Working with Data
+    func saveTasks() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(tasksArray)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("Error upon encoding tasks data, \(error)")
         }
         
-        tableView.deselectRow(at: indexPath, animated: true)
+        self.tableView.reloadData()
+    }
+    
+    func loadData() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                tasksArray = try decoder.decode([[Task]].self, from: data)
+            } catch {
+                print("Could not decode the Tasks array, \(error)")
+            }
+        }
     }
 }

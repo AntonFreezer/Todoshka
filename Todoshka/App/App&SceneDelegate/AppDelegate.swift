@@ -15,9 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
-        
         return true
+        
     }
 
     // MARK: UISceneSession Lifecycle
@@ -35,15 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-        print(applicationWillResignActive)
+        //
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        print(applicationDidEnterBackground)
+        //
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        print(applicationWillTerminate)
+        //
     }
 
     // MARK: - Core Data stack
