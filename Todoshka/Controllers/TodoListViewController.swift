@@ -62,8 +62,16 @@ class TodoListViewController: UITableViewController {
                 newTask.text = text
                 newTask.isDone = false
                 
-                self.tasksArray.append([newTask])
-                self.saveTasks()
+                self.tableView.beginUpdates()
+                
+                UIView.animate(withDuration: 0.33, animations: {
+                    self.tasksArray.append([newTask])
+                    let indexSet = IndexSet(integer: self.tasksArray.count - 1)
+                    self.tableView.insertSections(indexSet, with: .left)}) { _ in
+                        self.saveTasks()
+                    }
+                
+                self.tableView.endUpdates()
             }
         }
         
@@ -78,7 +86,8 @@ class TodoListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        // hiding the first sectionHeader
+        // making the space between navBar and first task
+        super.tableView(tableView, heightForHeaderInSection: section)
         return section == 0 ? 15 : 4.0
     }
     
@@ -108,24 +117,34 @@ class TodoListViewController: UITableViewController {
         
         return cell
     }
-    //MARK: - UITableView Delegate - Accessory Type
+    //MARK: - Ticking and deleting the task
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let taskForCell = tasksArray[indexPath.section][indexPath.row]
         taskForCell.isDone = !taskForCell.isDone
         
-        saveTasks()
-        tableView.deselectRow(at: indexPath, animated: false)
+        tableView.beginUpdates()
+        UIView.animate(withDuration: 0.33, animations: {
+            self.tasksArray.remove(at: indexPath.section)
+            let indexSet = IndexSet(arrayLiteral: indexPath.section)
+            
+            tableView.deleteSections(indexSet, with: .right)}) { _ in
+                
+                self.context.delete(taskForCell)
+                self.saveTasks()
+            }
+        
+        tableView.endUpdates()
     }
     
     //MARK: - Working with Data
     func saveTasks() {
+        guard context.hasChanges else { return }
         do {
             try context.save()
         } catch {
             print("Error when saving context \(error)")
         }
-        
-        self.tableView.reloadData()
     }
     
     func loadData() {

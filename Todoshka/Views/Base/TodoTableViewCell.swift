@@ -37,11 +37,16 @@ class TodoTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        configureDecorations()
         configureLayout()
     }
     
-    func configureLayout() {
+    func configureDecorations() {
         self.backgroundColor = UIColor(named: Colors.TableViewBackgroundColor.rawValue)
+        self.selectionStyle = .none
+    }
+    
+    func configureLayout() {
         contentView.addSubview(taskView)
         taskView.addSubview(messageLabel)
     }
