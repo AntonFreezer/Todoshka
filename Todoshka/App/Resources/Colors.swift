@@ -7,6 +7,7 @@
 
 enum Colors: String {
     case NavBarColor
+    case SearchBarColor
     case TableViewBackgroundColor
     case TaskTodoTableViewCellColor
 }

@@ -11,41 +11,63 @@ import CoreData
 
 class TodoListViewController: UITableViewController {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate)
+    //MARK: - Variables
+    private let context = (UIApplication.shared.delegate as! AppDelegate)
         .persistentContainer.viewContext
     
-    var tasksArray = [[Task]]()
+    private var tasksArray = [[Task]]()
+    
+    //MARK: - UI Components
+    var resultsSearchController = UISearchController(searchResultsController: nil)
+    
+    //MARK: - LifeCycle
+    override func viewWillAppear(_ animated: Bool) {
+        loadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
-        loadData()
-        
+        configureSearchController()
         configureNavigationView()
         configureTableView()
+        
+        //        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     //MARK: - Views Configuration
     func configureTableView() {
         title = "Tasks To Do"
+        
         tableView.sectionHeaderTopPadding = 0
+        tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+        
         view.backgroundColor = UIColor(named: Colors.TableViewBackgroundColor.rawValue)
+        tableView.tableHeaderView?.backgroundColor = UIColor(named: Colors.NavBarColor.rawValue)
         
         tableView.register(
             TaskTodoTableViewCell.self,
             forCellReuseIdentifier: TaskCellType.task.rawValue)
-        
-        tableView.separatorStyle = .none
-        tableView.rowHeight = UITableView.automaticDimension
     }
     
     func configureNavigationView() {
+        
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
-        addButton.tintColor = .darkGray
-        navigationItem.rightBarButtonItem = addButton
+        
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showResultsSearchController))
+        
+        navigationItem.rightBarButtonItems = [addButton, searchButton]
     }
-    //MARK: - Actions
+    
+    private func configureSearchController() {
+        resultsSearchController.searchResultsUpdater = self
+        
+        resultsSearchController.searchBar.sizeToFit()
+        resultsSearchController.searchBar.barTintColor = UIColor(named: Colors.SearchBarColor.rawValue)
+        
+        resultsSearchController.searchBar.placeholder = "Search for the task"
+    }
+    //MARK: - Add
     @objc func addButtonPressed() {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add new task", message: nil, preferredStyle: .alert)
@@ -110,14 +132,12 @@ class TodoListViewController: UITableViewController {
         
         
         cell.messageLabel.text = task.text
-        cell.accessoryType = task.isDone ? .checkmark : .none
-        
         cell.taskView.clipsToBounds = true
         cell.taskView.layer.cornerRadius = 7
         
         return cell
     }
-    //MARK: - Ticking and deleting the task
+    //MARK: - Delete
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let taskForCell = tasksArray[indexPath.section][indexPath.row]
@@ -137,7 +157,7 @@ class TodoListViewController: UITableViewController {
         tableView.endUpdates()
     }
     
-    //MARK: - Working with Data
+    //MARK: - Core Data
     func saveTasks() {
         guard context.hasChanges else { return }
         do {
@@ -161,6 +181,27 @@ class TodoListViewController: UITableViewController {
             for task in tasksRequestResult {
                 tasksArray.append([task])
             }
+        }
+    }
+}
+    //MARK: - Search
+    extension TodoListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        //
+    }
+    
+    private func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+            searchBar.showsCancelButton = true
+        }
+    
+    @objc private func showResultsSearchController() {
+        if tableView.tableHeaderView == nil {
+            tableView.tableHeaderView = resultsSearchController.searchBar
+            
+            
+        } else {
+            tableView.tableHeaderView = nil
         }
     }
 }

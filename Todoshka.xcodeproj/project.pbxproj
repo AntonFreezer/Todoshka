@@ -16,6 +16,7 @@
 		962BFEAC2A6BF06C0040A29B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962BFEAB2A6BF06C0040A29B /* LaunchScreen.storyboard */; };
 		962BFEB02A6C08D30040A29B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 962BFEAF2A6C08D30040A29B /* SnapKit */; };
 		962BFEB22A6C3A180040A29B /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962BFEB12A6C3A180040A29B /* TodoTableViewCell.swift */; };
+		963073F52A77E19F006EA180 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963073F42A77E19F006EA180 /* AlertManager.swift */; };
 		9677E0FC2A6EB01700461D67 /* MainNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9677E0FB2A6EB01700461D67 /* MainNC.swift */; };
 		96DECE862A7055B5002E6841 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DECE852A7055B5002E6841 /* Colors.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		962BFEA52A6BE5790040A29B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		962BFEAB2A6BF06C0040A29B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		962BFEB12A6C3A180040A29B /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
+		963073F42A77E19F006EA180 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		9677E0FB2A6EB01700461D67 /* MainNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNC.swift; sourceTree = "<group>"; };
 		96DECE852A7055B5002E6841 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +77,7 @@
 		962BFE932A6BE5780040A29B /* Todoshka */ = {
 			isa = PBXGroup;
 			children = (
+				963073F32A77E139006EA180 /* Managers */,
 				962BFEB62A6C59F90040A29B /* App */,
 				962BFEB72A6C5A0E0040A29B /* Controllers */,
 				9614DA4E2A6DADE90037961D /* Views */,
@@ -135,6 +138,14 @@
 				962BFEB12A6C3A180040A29B /* TodoTableViewCell.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		963073F32A77E139006EA180 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				963073F42A77E19F006EA180 /* AlertManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		9692DA7C2A72B69300F5D4E8 /* Model */ = {
@@ -229,6 +240,7 @@
 				962BFE952A6BE5780040A29B /* AppDelegate.swift in Sources */,
 				962BFE9F2A6BE5780040A29B /* DataModel.xcdatamodeld in Sources */,
 				962BFE972A6BE5780040A29B /* SceneDelegate.swift in Sources */,
+				963073F52A77E19F006EA180 /* AlertManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
