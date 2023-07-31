@@ -69,36 +69,24 @@ class TodoListViewController: UITableViewController {
     }
     //MARK: - Add
     @objc func addButtonPressed() {
-        var textField = UITextField()
-        let alert = UIAlertController(title: "Add new task", message: nil, preferredStyle: .alert)
         
-        alert.addTextField { alertTextField in
-            alertTextField.placeholder = "e.g. call mom tomorrow morning"
-            textField = alertTextField
-        }
-        
-        let action  = UIAlertAction(title: "Add task", style: .default) { action in
+        AlertManager.addTaskAlert(on: self) { strings in
+            let taskText = strings.first
             
-            if let text = textField.text, !text.isEmpty {
-                let newTask = Task(context: self.context)
-                newTask.text = text
-                newTask.isDone = false
-                
-                self.tableView.beginUpdates()
-                
-                UIView.animate(withDuration: 0.33, animations: {
-                    self.tasksArray.append([newTask])
-                    let indexSet = IndexSet(integer: self.tasksArray.count - 1)
-                    self.tableView.insertSections(indexSet, with: .left)}) { _ in
-                        self.saveTasks()
-                    }
-                
-                self.tableView.endUpdates()
-            }
+            let newTask = Task(context: self.context)
+            newTask.text = taskText
+            newTask.isDone = false
+            
+            self.tasksArray.append([newTask])
+            
+            self.tableView.beginUpdates()
+            UIView.animate(withDuration: 0.33, animations: {
+                let indexSet = IndexSet(integer: self.tasksArray.count - 1)
+                self.tableView.insertSections(indexSet, with: .left)}) { _ in
+                    self.saveTasks()
+                }
+            self.tableView.endUpdates()
         }
-        
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
     }
     //MARK: - UITableView Delegate & Data Source
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
